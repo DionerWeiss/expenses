@@ -1,7 +1,6 @@
-import 'package:expenses/models/transaction.dart';
 import 'package:flutter/material.dart';
-import '../models/transaction.dart';
 import 'package:intl/intl.dart';
+import '../models/transaction.dart';
 
 class TransactionList extends StatelessWidget {
   const TransactionList(this.transactions, {Key? key}) : super(key: key);
