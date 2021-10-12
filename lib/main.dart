@@ -11,26 +11,30 @@ main() => runApp(ExpensesApp());
 class ExpensesApp extends StatelessWidget {
   ExpensesApp({Key? key}) : super(key: key);
 
-  final ThemeData theme = ThemeData(
-    primarySwatch: Colors.green,
-    fontFamily: 'Quicksand',
-    appBarTheme: const AppBarTheme(
-      titleTextStyle: TextStyle(
-        fontFamily: 'OpenSans',
-        fontSize: 20,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
-  );
-  // Theme.of(context).textTheme.headline6
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: MyHomePage(),
-      theme: theme.copyWith(
-        colorScheme: theme.colorScheme.copyWith(
-          secondary: Colors.amber,
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+              headline6: const TextStyle(
+                fontFamily: 'OpenSans',
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+              button: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+        appBarTheme: const AppBarTheme(
+          titleTextStyle: TextStyle(
+            fontFamily: 'OpenSans',
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
