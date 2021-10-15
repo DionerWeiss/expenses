@@ -88,6 +88,8 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
   ];
 
+  bool _showChart = false;
+
   List<Transaction> get _recentTransactions {
     return _transactions
         .where(
@@ -153,14 +155,29 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(
-              height: availableHeight * 0.3,
-              child: Chart(_recentTransactions),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Exibir Gráfico'),
+                Switch(
+                    value: _showChart,
+                    onChanged: (value) {
+                      setState(() {
+                        _showChart = value;
+                      });
+                    }),
+              ],
             ),
-            SizedBox(
-              height: availableHeight * 0.7,
-              child: TransactionList(_transactions, _deleteTransaction),
-            ),
+            if (_showChart)
+              SizedBox(
+                height: availableHeight * 0.3,
+                child: Chart(_recentTransactions),
+              ),
+            if (!_showChart)
+              SizedBox(
+                height: availableHeight * 0.7,
+                child: TransactionList(_transactions, _deleteTransaction),
+              ),
           ],
         ),
       ),
